@@ -19,6 +19,8 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
+AUTH_USER_MODEL = "users.User"
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
@@ -36,6 +38,8 @@ JQUERY_URL = False
 
 INSTALLED_APPS = [
     'setor',
+    'unidade',
+    'users',
     'chamado',
     'tipo_chamado',
     'jazzmin',
@@ -87,7 +91,7 @@ WSGI_APPLICATION = 'suporte.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'suporte',
+        'NAME': 'help_desk',
         'HOST': '127.0.0.1',
         'PORT': '',
         'USER': 'root',
@@ -176,7 +180,7 @@ JAZZMIN_SETTINGS = {
     "copyright": "Rafael",
 
     # The model admin to search from the search bar, search bar omitted if excluded
-    "search_model": "auth.User",
+    "search_model": "users.User",
 
     # Field name on user model that contains avatar image
     "user_avatar": None,
@@ -190,14 +194,14 @@ JAZZMIN_SETTINGS = {
 
         # Url that gets reversed (Permissions can be added)
         {"name": "Home",  "url": "admin:index",
-            "permissions": ["auth.view_user"]},
+            "permissions": ["users.view_user"]},
 
         # external url that opens in a new window (Permissions can be added)
         {"name": "Support", "url": "",
             "new_window": True},
 
         # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
+        {"model": "users.User"},
 
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "books"},
@@ -211,7 +215,7 @@ JAZZMIN_SETTINGS = {
     "usermenu_links": [
         {"name": "Support", "url": "/",
             "new_window": True},
-        {"model": "auth.user"}
+        {"model": "users.user"}
     ],
 
     #############
@@ -231,7 +235,7 @@ JAZZMIN_SETTINGS = {
     "hide_models": [],
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
-    "order_with_respect_to": ["auth", "books", "books.author", "books.book"],
+    "order_with_respect_to": ["users", "books", "books.author", "books.book"],
 
     # Custom links to append to app groups, keyed on app name
     "custom_links": {
@@ -280,7 +284,7 @@ JAZZMIN_SETTINGS = {
     # - carousel
     "changeform_format": "horizontal_tabs",
     # override change forms on a per modeladmin basis
-    "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "vertical_tabs"},
+    "changeform_format_overrides": {"users.user": "collapsible", "users.group": "vertical_tabs"},
     # Add a language dropdown into the admin
     "language_chooser": False,
 }

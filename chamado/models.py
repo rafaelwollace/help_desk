@@ -1,8 +1,10 @@
-from django.contrib.auth.models import User
+
 from django.db import models
 from django.utils.timezone import now
 from smart_selects.db_fields import ChainedForeignKey
+
 from tipo_chamado.models import Sistema, TipoChamado
+from users.models import User
 
 # Create your models here.
 

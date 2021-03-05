@@ -47,7 +47,6 @@ class ChamadoAdmin(admin.ModelAdmin):
         return self.readonly_fields
 
     # TODO: VISUALIZAR APENAS O QUE É SEU
-
     def get_queryset(self, request):
         qs = super(ChamadoAdmin, self).get_queryset(request)
         if request.user.is_superuser:
