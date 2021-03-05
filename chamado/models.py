@@ -39,10 +39,8 @@ class Chamado(models.Model):
         max_length=1,
         choices=(
             ("A", "Aberto"),
-            ("C", "Criado"),
             ("R", "Reprovado"),
-            ("P", "Pendente"),
-            ("E", "Enviado"),
+            ("E", "Encaminhado"),
             ("F", "Finalizado"),
         ),
     )
