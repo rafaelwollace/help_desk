@@ -235,7 +235,7 @@ JAZZMIN_SETTINGS = {
     "hide_models": [],
 
     # List of apps (and/or models) to base side menu ordering off of (does not need to contain all apps/models)
-    "order_with_respect_to": ["users", "books", "books.author", "books.book"],
+    "order_with_respect_to": ["auth", "users", "chamado", "tipo_chamado", "setor", "unidade"],
 
     # Custom links to append to app groups, keyed on app name
     "custom_links": {
@@ -284,7 +284,7 @@ JAZZMIN_SETTINGS = {
     # - carousel
     "changeform_format": "horizontal_tabs",
     # override change forms on a per modeladmin basis
-    "changeform_format_overrides": {"users.user": "collapsible", "users.group": "vertical_tabs"},
+    "changeform_format_overrides": {"auth.user": "collapsible", "auth.group": "horizontal_tabs"},
     # Add a language dropdown into the admin
     "language_chooser": False,
 }
