@@ -25,6 +25,14 @@ class ChamadoAdmin(admin.ModelAdmin):
     readonly_fields = ('usuario', 'tecnico_chamado',
                        'status_chamado', 'show_firm_url',)
     list_editable = ('tecnico_chamado',)
+    actions = ['make_published']
+
+    def make_published(self, request, queryset):
+        queryset.update(status_chamado='F')
+
+    make_published.short_description = "Finalizar Chamados"
+
+    # TODO: CRIA LINK PARA O MODEL USUARIO
 
     @mark_safe
     def show_firm_url(self, ob):
@@ -36,7 +44,6 @@ class ChamadoAdmin(admin.ModelAdmin):
     show_firm_url.short_description = "Inf. do Usúario."
 
     # TODO: SETAR USUARIO LOGADO NO MODELADM
-
     def save_model(self, request, obj, form, change):
         if obj.usuario is None:
             obj.usuario = request.user
@@ -45,7 +52,7 @@ class ChamadoAdmin(admin.ModelAdmin):
             obj.tecnico_chamado
         obj.save()
 
-        # TODO: SETA USUARIO LOGADO NO INLINE
+    # TODO: SETA USUARIO LOGADO NO INLINE
     def save_formset(self, request, form, formset, change):
         for inline_form in formset.forms:
             if inline_form.has_changed():
